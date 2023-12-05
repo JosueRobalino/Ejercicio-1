@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+int main() {
+    char nombreMatriz[50];
+    int matriz[3][3];
+
+    printf("Ingrese el nombre de la matriz: ");
+    scanf("%s", nombreMatriz);
+
+    printf("Ingrese los valores de la matriz de 3x3:\n");
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("Ingrese el valor para %s[%d][%d]: ", nombreMatriz, i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    printf("\n|%s [3][3]:\n", nombreMatriz);
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("|%s%d%d ", nombreMatriz, i, j);
+        }
+        printf("|\n");
+    }
+
+    printf("\nValores de la matriz:\n");
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("|%d ", matriz[i][j]);
+        }
+        printf("|\n");
+    }
+
+    int determinante = (matriz[0][0] * matriz[1][1] * matriz[2][2]) +
+                       (matriz[0][1] * matriz[1][2] * matriz[2][0]) +
+                       (matriz[0][2] * matriz[1][0] * matriz[2][1]) -
+                       (matriz[0][2] * matriz[1][1] * matriz[2][0]) -
+                       (matriz[0][1] * matriz[1][0] * matriz[2][2]) -
+                       (matriz[0][0] * matriz[1][2] * matriz[2][1]);
+
+    printf("\nDeterminante: %d\n", determinante);
+
+
+    printf("\nResultado de la multiplicación por la determinante:\n");
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("|%d ", matriz[i][j] * determinante);
+        }
+        printf("|\n");
+    }
+
+    return 0;
+}
